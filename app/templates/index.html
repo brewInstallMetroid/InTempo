@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}InTempo{% endblock %}
+{% block content %} 
+	<h1>Game content goes here</h1>
+	
+	{% if challenges %}
+		{% for Challenge in challenges %}
+			{% if Challenge.id == 1 %}
+			<p>{{ Challenge.song }} by {{Challenge.artist }}</p>
+			<audio controls>
+				<source src="{{ Challenge.clip_1.url }}" type="audio/mp3">
+			</audio>
+			<audio controls>
+				<source src="{{ Challenge.clip_2.url }}" type="audio/mp3">
+			</audio>
+			<audio controls>
+				<source src="{{ Challenge.clip_3.url }}" type="audio/mp3">
+			</audio>
+			{% endif %}
+		{% endfor %}
+	{% else %}
+		<h2>No challenges</h2>
+	{% endif %}
+
+{% endblock %}
