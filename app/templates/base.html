@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 {% load static %}
-
 <head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}?v=5">
 </head>
 <body>
+
+	<div class="banner">
+		<h1 class="logo-title" id="InTempo">InTempo</h1>
+	</div>
+
 	<div class="container">
-		<div class="banner">
-			<div class="logo">
-				<h>InTempo</h>
-			</div>
-		</div>
-		
 		{% block content %}{% endblock %}
-	
-		<div class="footer">
-			<p>© Group 4, 2026</p>
-			<p>Alex Orellana, Audra Krebs, Christopher Thompson, Jonathon Richardson, Jorge Lopez-Ceron</p>
-		</div>
-    </div>
+	</div>
+
+	<footer class="footer">
+		<p>&copy; Group 4, 2026</p>
+		<p>Alex Orellana, Audra Krebs, Christopher Thompson, Jonathon Richardson, Jorge Lopez-Ceron</p>
+	</footer>
 
 </body>
 </html>

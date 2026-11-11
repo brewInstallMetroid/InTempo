@@ -1,25 +1,75 @@
 {% extends "base.html" %}
 {% block title %}InTempo{% endblock %}
-{% block content %} 
-	<h1>Game content goes here</h1>
-	
-	{% if challenges %}
-		{% for Challenge in challenges %}
-			{% if Challenge.id == 1 %}
-			<p>{{ Challenge.song }} by {{Challenge.artist }}</p>
-			<audio controls>
-				<source src="{{ Challenge.clip_1.url }}" type="audio/mp3">
-			</audio>
-			<audio controls>
-				<source src="{{ Challenge.clip_2.url }}" type="audio/mp3">
-			</audio>
-			<audio controls>
-				<source src="{{ Challenge.clip_3.url }}" type="audio/mp3">
-			</audio>
-			{% endif %}
-		{% endfor %}
-	{% else %}
-		<h2>No challenges</h2>
-	{% endif %}
+{% block content %}
 
+<div class="content-body">
+	<div class="game-stage">
+		{% if challenges %}
+			{% for Challenge in challenges %}
+				{% if Challenge.id == 1 %}
+				<!--Daily Header-->
+				<div class="challenge-meta">
+					<span class="challenge-eyebrow">DAILY CHALLENGE #001</span>
+					<h1 class="challenge-title">Guess the Song</h1>
+					<p class="challenge-desc">Listen to the clip and name the track</p>
+				</div>
+
+				<!--Audio clips-->
+				<div class="audio-clips-container">
+					<div class="clip-item">
+						<span class="clip-label">Clip 1</span>
+						<audio controls>
+							<source src="{{ Challenge.clip_1.url }}" type="audio/mp3">
+						</audio>
+					</div>
+					<div class="clip-item">
+						<span class="clip-label">Clip 2</span>
+						<audio controls>
+							<source src="{{ Challenge.clip_2.url }}" type="audio/mp3">
+						</audio>
+					</div>
+					<div class="clip-item">
+						<span class="clip-label">Clip 3</span>
+						<audio controls>
+							<source src="{{ Challenge.clip_3.url }}" type="audio/mp3">
+						</audio>
+					</div>
+				</div>
+
+				<!--Guess input-->
+				<div class="guess-section">
+					<label for="guessInput" class="guess-label">Your guess</label>
+					<div class="input-container">
+						<input
+							type="text"
+							id="guessInput"
+							name="guessInput"
+							placeholder="Enter song title or artist..."
+							readonly
+						>
+					</div>
+
+					<button class="submit-btn" type="button">Submit Guess</button>
+				</div>
+				
+				<!--Attempts remaining-->
+				<div class="attempts-row">
+					<span class="attempts-label">Attempts remaining</span>
+					<div class="attempt-boxes">
+						<span class="attempt-box">1</span>
+						<span class="attempt-box">2</span>
+						<span class="attempt-box">3</span>
+					</div>
+				</div>
+				{% endif %}
+			{% endfor %}
+		{% else %}
+			<div class="empty-state">
+				<h2>No challenges</h2>
+			</div>
+		{% endif %}
+	</div>
+</div>
 {% endblock %}
+	
+

@@ -1,41 +1,191 @@
 *{
 	margin: 0;
 	padding: 0;
-	font-family: sans-serif;
+	box-sizing: border-box;
+}
+body {
+	background: #1f2120;
+	color: #e1ede4;
+	font-family: Helvetica, Arial, sans-serif;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
 .container{
-	height: 100vh;
+	flex: 1;
 	width: 100%;
-	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 30px 16px;
 	background: #1f2120;
 }
 .banner{
-	height: 12%;
+	min-height: 110px;
 	width: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	background: #101210;
+	border-bottom: 1px solid #2d362e;
+	padding: 16px 0;
 }
-.logo h{
+#InTempo,
+.banner h1,
+.logo-title,
+.logo h {
 	font-family: Helvetica, Arial, sans-serif;
 	font-size: 65px;
 	font-weight: 850;
 	text-align: center;
 	color: #e1ede4;
+	letter-spacing: -1px;
+	margin: 0;
+	line-height: 1.1;
 }
 .footer{
-	height: 70px;
 	width: 100%;
 	background: #040504;
-	/*The footer position is fixed for now, but I think it would look better
-	 * relative once we have the container contents filled out*/
-	position: fixed;
-	bottom: 0px;
+	border-top: 1px solid #2d362e;
+	padding: 18px 0;
+	margin-top: auto;
+	text-align: center;
 }
 .footer p{
 	font-family: Helvetica, Arial, sans-serif;
-	padding-top: 8px;
+	font-size: 13px;
+	line-height: 1.6;
 	text-align: center;
 	color: #cbd1cc;
+	margin: 4px 0;
+}
+.game-stage {
+	background-color: #191c1a;
+	border: 1px solid #2d362e;
+	border-radius: 16px;
+	padding: 28px 24px;
+	max-width: 460px;
+	width: 100%;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+.challenge-meta {
+	text-align: center;
+	margin-bottom: 24px;
+}
+.challenge-eyebrow {
+	font-size: 11px;
+	letter-spacing: 1.5px;
+	color: #8da191;
+	font-weight: 700;
+}
+.challenge-title {
+	font-size: 24px;
+	margin: 6px 0;
+	color: #e1ede4;
+}
+.challenge-desc {
+	font-size: 13px;
+	color: #8da191;
+	margin: 0;
+}
+.audio-clips-container {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	margin-bottom: 22px;
+}
+.clip-item {
+	background: #141615;
+	border: 1px solid #2d362e;
+	border-radius: 8px;
+	padding: 8px 12px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+.clip-label {
+	font-size: 12px;
+	font-weight: 600;
+	color: #cbd1cc;
+	min-width: 45px;
+}
+.clip-item audio {
+	flex: 1;
+	height: 32px;
+	filter: invert(0.88) hue-rotate(180deg);
+}
+.guess-section {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	margin-bottom: 22px;
+}
+.guess-label {
+	font-size: 12px;
+	font-weight: 600;
+	color: #cbd1cc;
+}
+.input-container {
+	position: relative;
+	width: 100%;
+}
+.guess-input {
+	width: 100%;
+	background: #121413;
+	border: 1px solid #2d362e;
+	border-radius: 8px;
+	padding: 10px 12px;
+	color: #e1ede4;
+	font-size: 14px;
+}
+.submit-btn {
+	width: 100%;
+	background: #e1ede4;
+	color: #121413;
+	border: none;
+	border-radius: 8px;
+	padding: 11px;
+	font-weight: 700;
+	font-size: 14px;
+	cursor: pointer;
+	margin-top: 4px;
+}
+.attempts-row {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 8px;
+}
+.attempts-label {
+	font-size: 12px;
+	color: #8da191;
+}
+.attempt-boxes {
+	display: flex;
+	gap: 8px;
+}
+.attempt-box {
+	width: 32px;
+	height: 32px;
+	border-radius: 6px;
+	background: #141615;
+	border: 1px solid #2d362e;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 13px;
+	color: #e1ede4;
+	font-weight: 600;
+}
+.empty-state h2 {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 24px;
+	color : #e1ede4;
+	text-align: center;
 }
