@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+	<div class="container">
+		<div class="banner">
+			<div class="logo">
+				<h>InTempo</h>
+			</div>
+		</div>
+		
+		{% block content %}{% endblock %}
+	
+		<div class="footer">
+			<p>© Group 4, 2026</p>
+			<p>Alex Orellana, Audra Krebs, Christopher Thompson, Jonathon Richardson, Jorge Lopez-Ceron</p>
+		</div>
+    </div>
+
+</body>
+</html>
