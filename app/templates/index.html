@@ -4,9 +4,6 @@
 
 <div class="content-body">
 	<div class="game-stage">
-		{% if challenges %}
-			{% for Challenge in challenges %}
-				{% if Challenge.id == 1 %}
 				<!--Daily Header-->
 				<div class="challenge-meta">
 					<span class="challenge-eyebrow">DAILY CHALLENGE #001</span>
@@ -19,40 +16,50 @@
 					<div class="clip-item">
 						<span class="clip-label">Clip 1</span>
 						<audio controls>
-							<source src="{{ Challenge.clip_1.url }}" type="audio/mp3">
+							<source src="{{ challenge.clip_1.url }}" type="audio/mp3">
 						</audio>
 					</div>
 					<div class="clip-item">
 						<span class="clip-label">Clip 2</span>
 						<audio controls>
-							<source src="{{ Challenge.clip_2.url }}" type="audio/mp3">
+							<source src="{{ challenge.clip_2.url }}" type="audio/mp3">
 						</audio>
 					</div>
 					<div class="clip-item">
 						<span class="clip-label">Clip 3</span>
 						<audio controls>
-							<source src="{{ Challenge.clip_3.url }}" type="audio/mp3">
+							<source src="{{ challenge.clip_3.url }}" type="audio/mp3">
 						</audio>
 					</div>
 				</div>
 
 				<!--Guess input-->
-				<div class="guess-section">
-					<label for="guessInput" class="guess-label">Your guess</label>
+				<form method="POST" class="guess-section">
+					{% csrf_token %}
+					{% if is_correct == True %}
+					<div class="guess-label">
+						Correct! You guessed the song!
+					</div>
+					{% elif is_correct == False %}
+						<div class="guess-label">
+							Incorrect! Try again.
+						</div>
+					{% endif %}
+					<label for="guess" class="guess-label">Your guess</label>
 					<div class="input-container">
 						<input
 							type="text"
-							id="guessInput"
-							name="guessInput"
-							placeholder="Enter song title or artist..."
-							readonly
+							id="guess"
+							name="guess"
+							placeholder="Enter song title..."
+							required
 						>
 					</div>
 
-					<button class="submit-btn" type="button">Submit Guess</button>
-				</div>
+					<button class="submit-btn" type="submit">Submit Guess</button>
+				</form>
 				
-				<!--Attempts remaining-->
+				<!---
 				<div class="attempts-row">
 					<span class="attempts-label">Attempts remaining</span>
 					<div class="attempt-boxes">
@@ -60,14 +67,12 @@
 						<span class="attempt-box">2</span>
 						<span class="attempt-box">3</span>
 					</div>
-				</div>
-				{% endif %}
-			{% endfor %}
-		{% else %}
+				</div>-->
+		<!--- some of the changes to this file are temporary to get the demo to be functional.
 			<div class="empty-state">
 				<h2>No challenges</h2>
 			</div>
-		{% endif %}
+			--->
 	</div>
 </div>
 {% endblock %}
